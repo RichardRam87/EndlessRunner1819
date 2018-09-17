@@ -11,12 +11,17 @@ public class ChunkSpawner : MonoBehaviour
     private float _spawnThreshold;
 
     private Transform _player;
+    private LevelChunk _currentChunk;
 
 	private void Awake()
 	{
         _player = GameObject.FindWithTag("Player").transform;
 	}
 
+	private void Start()
+	{
+        _currentChunk = FindObjectOfType<LevelChunk>();
+	}
 	private void Update()
 	{
         if (_spawnThreshold > _player.position.x) return;
@@ -26,6 +31,13 @@ public class ChunkSpawner : MonoBehaviour
 
     void SpawnChunk()
     {
+        LevelChunk chunk = _chunks[Random.Range(0, _chunks.Length)];
+        Vector3 spawnPosition = new Vector3(_currentChunk.transform.position.x,
+                                            _currentChunk.transform.position.y,
+                                            _currentChunk.transform.position.z);
+        Instantiate(chunk, spawnPosition, Quaternion.identity);
+        _spawnThreshold += chunk.Size.x;
+
         print("Spawn");
     }
 
