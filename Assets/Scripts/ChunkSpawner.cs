@@ -31,18 +31,17 @@ public class ChunkSpawner : MonoBehaviour
 
     void SpawnChunk()
     {
-        LevelChunk chunk = _chunks[Random.Range(0, _chunks.Length)];
-        Vector3 spawnPosition = new Vector3(_currentChunk.transform.position.x,
-                                            _currentChunk.transform.position.y,
-                                            _currentChunk.transform.position.z);
-        Instantiate(chunk, spawnPosition, Quaternion.identity);
-        _spawnThreshold += chunk.Size.x;
-
-        print("Spawn");
+        LevelChunk newChunk = _chunks[Random.Range(0, _chunks.Length)];
+        Vector3 spawnPosition = new Vector3((_currentChunk.Position.x + _currentChunk.Size.x / 2f) + (newChunk.Size.x / 2f),
+                                             _currentChunk.Position.y,
+                                             _currentChunk.Position.z);
+        _currentChunk = Instantiate(newChunk, spawnPosition, Quaternion.identity);
+        _spawnThreshold += newChunk.Size.x;
     }
 
 	private void OnDrawGizmos()
 	{
+        Gizmos.color = Color.red;
         Gizmos.DrawLine(new Vector3(_spawnThreshold, -5, 0), new Vector3(_spawnThreshold, 5, 0));
 	}
 }

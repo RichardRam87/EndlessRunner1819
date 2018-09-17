@@ -308,10 +308,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1276266422887574, guid: df686cb39f30c4f8da3a8e6919a340b1, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df686cb39f30c4f8da3a8e6919a340b1, type: 2}
   m_IsPrefabAsset: 0
@@ -384,8 +380,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0311569e35eb5489583475b6ca30543b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chunks: []
-  _spawnThreshold: 2
+  _chunks:
+  - {fileID: 114876993895688604, guid: d026dd98539734301a04c732c379b9d3, type: 2}
+  - {fileID: 114957576788341388, guid: 77ae1e8022b614d879cb0887a4dd9ac0, type: 2}
+  - {fileID: 114861933734548678, guid: d69e5cbd21d09410cb7bf2e0115e987f, type: 2}
+  _spawnThreshold: -3
 --- !u!4 &1440909894
 Transform:
   m_ObjectHideFlags: 0
