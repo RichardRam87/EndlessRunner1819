@@ -11,7 +11,8 @@ public class ChunkSpawner : MonoBehaviour
     private float _spawnThreshold;
 
     private Transform _player;
-    private LevelChunk _currentChunk;
+    //private LevelChunk _currentChunk;
+    private ChunkContainer _chunkContainer;
 
 	private void Awake()
 	{
@@ -20,7 +21,7 @@ public class ChunkSpawner : MonoBehaviour
 
 	private void Start()
 	{
-        _currentChunk = FindObjectOfType<LevelChunk>();
+        _chunkContainer = GetComponent<ChunkContainer>();
 	}
 
 	private void Update()
@@ -32,14 +33,23 @@ public class ChunkSpawner : MonoBehaviour
 
     void SpawnChunk()
     {
-        LevelChunk newChunk = _chunks[Random.Range(0, _chunks.Length)];
-        Vector3 spawnPosition = new Vector3((_currentChunk.Position.x + _currentChunk.Size.x / 2f) + (newChunk.Size.x / 2f),
-                                             _currentChunk.Position.y,
-                                             _currentChunk.Position.z);
-        _currentChunk = Instantiate(newChunk, spawnPosition, Quaternion.identity);
-        _spawnThreshold += newChunk.Size.x;
+		LevelChunk currentChunk = _chunkContainer.CurrentChunk;
+        LevelChunk newChunk;
+        do
+        {
+            newChunk = _chunks[Random.Range(0, _chunks.Length)];
+        } while (_chunkContainer.HasChunkColor(newChunk.ChunkColor) && !_chunkContainer.HasAllColors());
 
-        _currentChunk.transform.SetParent(transform);
+        Vector3 spawnPosition = new Vector3((currentChunk.Position.x + currentChunk.Size.x / 2f) + (newChunk.Size.x / 2f),
+                                             currentChunk.Position.y,
+                                             currentChunk.Position.z);
+        
+        LevelChunk nextChunk = Instantiate(newChunk, spawnPosition, Quaternion.identity);
+
+        _chunkContainer.AddChunk(nextChunk);
+        _spawnThreshold += nextChunk.Size.x;
+
+        nextChunk.transform.SetParent(transform);
     }
 
 	private void OnDrawGizmos()

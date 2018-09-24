@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4433278786412338}
   - component: {fileID: 212557901661330276}
+  - component: {fileID: 114727784291793240}
+  - component: {fileID: 61091774732987790}
   m_Layer: 0
   m_Name: LevelChunk_StartChunk
   m_TagString: Untagged
@@ -40,6 +42,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61091774732987790
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790557823732680}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &114727784291793240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790557823732680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 693ce7edb7084413f8a37c4f2ae178f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chunkColor: 3
+  _size: {x: 16, y: 5}
 --- !u!212 &212557901661330276
 SpriteRenderer:
   m_ObjectHideFlags: 1

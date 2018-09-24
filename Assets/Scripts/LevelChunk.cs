@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class LevelChunk : MonoBehaviour 
 {
+    public enum Color 
+    {
+        Red,
+        Blue,
+        Green,
+        Yellow
+    }
+    [SerializeField]
+    private Color _chunkColor;
+    public Color ChunkColor { get { return _chunkColor; }}
+
     [SerializeField]
     private Vector2 _size;
     public Vector2 Size { get { return _size; }}
