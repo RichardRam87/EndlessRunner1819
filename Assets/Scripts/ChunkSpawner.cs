@@ -22,6 +22,7 @@ public class ChunkSpawner : MonoBehaviour
 	{
         _currentChunk = FindObjectOfType<LevelChunk>();
 	}
+
 	private void Update()
 	{
         if (_spawnThreshold > _player.position.x) return;
@@ -37,6 +38,8 @@ public class ChunkSpawner : MonoBehaviour
                                              _currentChunk.Position.z);
         _currentChunk = Instantiate(newChunk, spawnPosition, Quaternion.identity);
         _spawnThreshold += newChunk.Size.x;
+
+        _currentChunk.transform.SetParent(transform);
     }
 
 	private void OnDrawGizmos()
