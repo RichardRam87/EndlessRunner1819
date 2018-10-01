@@ -11,7 +11,6 @@ public class ChunkSpawner : MonoBehaviour
     private float _spawnThreshold;
 
     private Transform _player;
-    //private LevelChunk _currentChunk;
     private ChunkContainer _chunkContainer;
 
 	private void Awake()
